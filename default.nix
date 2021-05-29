@@ -12,9 +12,10 @@ let
     esmf = self.callPackage ./nix/esmf { };
     nceplibs = self.callPackage ./nix/nceplibs { };
     fv3 = self.callPackage ./nix/fv3 { src=fv3gfs-fortran-src; };
-
+    pfunit = self.callPackage ./pfunit { };
     python3 = super.python3.override { packageOverrides = (packageOverrides self); };
     python = super.python.override { packageOverrides = (packageOverrides self); };
+
 
   };
   nixpkgs = import (builtins.fetchTarball {
