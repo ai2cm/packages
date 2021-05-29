@@ -5,12 +5,17 @@ let
     ref = "master";
     rev = "2d0ffc194f1b2f4974fcb5b61ab0dcef0b839854";
   };
-  overlay = self: super: with nixpkgs; rec {
+  packageOverrides = import ./python.nix;
+  overlay = self: super: {
     # ensure that everything uses mpich for mpi
     fms = self.callPackage ./nix/fms { src=fv3gfs-fortran-src; };
     esmf = self.callPackage ./nix/esmf { };
     nceplibs = self.callPackage ./nix/nceplibs { };
     fv3 = self.callPackage ./nix/fv3 { src=fv3gfs-fortran-src; };
+
+    python3 = super.python3.override { packageOverrides = (packageOverrides self); };
+    python = super.python.override { packageOverrides = (packageOverrides self); };
+
   };
   nixpkgs = import (builtins.fetchTarball {
   # Descriptive name to make the store path easier to identify
