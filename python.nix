@@ -1,5 +1,7 @@
 pkgs: self: super: {
 
+  call_py_fort = self.callPackage ./call_py_fort { };
+
   metpy = self.buildPythonPackage rec {
     pname = "MetPy";
     version = "1.0.1";
