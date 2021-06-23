@@ -13,8 +13,8 @@ let
     nceplibs = self.callPackage ./nix/nceplibs { };
     fv3 = self.callPackage ./nix/fv3 { src=fv3gfs-fortran-src; };
     pfunit = self.callPackage ./pfunit { };
-    serialbox = self.lib.makeOverridable (self.callPackage ./serialbox) { };
-    serialboxNoFortran = serialbox.override { enableFortran = false; };
+    serialbox = self.callPackage ./serialbox { };
+    serialboxNoFortran = self.callPackage ./serialbox { enableFortran = false; };
     python3 = super.python3.override { packageOverrides = (packageOverrides self); };
     python = super.python.override { packageOverrides = (packageOverrides self); };
   };
