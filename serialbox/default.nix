@@ -1,4 +1,5 @@
-{ fetchFromGitHub, lib, stdenv, cmake, boost, python3, gfortran, enableFortran ? true }:
+{ fetchFromGitHub, lib, stdenv, cmake, boost, pythonPackages, gfortran
+, enableFortran ? true }:
 
 stdenv.mkDerivation rec {
   pname = "serialbox";
@@ -12,7 +13,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ boost cmake ];
-  buildInputs = [ python3 python3.pkgs.numpy ];
+  buildInputs = with pythonPackages; [ python numpy wrapPython ];
 
   cmakeFlags = [
     "-DSERIALBOX_ENABLE_C=ON"
@@ -28,4 +29,7 @@ stdenv.mkDerivation rec {
     homepage = "https://gridtools.github.io/serialbox/";
   };
 
+  postInstall = ''
+    wrapPythonPrograms
+  '';
 }

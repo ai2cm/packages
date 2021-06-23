@@ -164,4 +164,7 @@ pkgs: self: super: {
 
   fv3gfs-wrapper = self.callPackage ./wrapper.nix { };
 
+  serialbox = self.toPythonModule (pkgs.serialbox.override { pythonPackages = self; });
+  serialboxNoFortran = self.toPythonModule (pkgs.serialboxNoFortran.override { pythonPackages = self; });
+
 }
