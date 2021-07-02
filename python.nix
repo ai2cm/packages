@@ -164,13 +164,4 @@ pkgs: self: super: {
 
   fv3gfs-wrapper = self.callPackage ./wrapper.nix { };
 
-  # These do not currently follow the conventions of standard Python packaging. To enable them:
-  # 1. reference the derivation in the nixpkgs overlay, and
-  # 2. add this to mkDerivation or mkShell:
-  # |  shellHook = ''
-  # |    export PYTHONPATH=${serialbox}/python:$PYTHONPATH
-  # |  '';
-  # serialbox = self.toPythonModule (pkgs.serialbox.override { pythonPackages = self; });
-  # serialboxNoFortran = self.toPythonModule (pkgs.serialboxNoFortran.override { pythonPackages = self; });
-
 }
