@@ -31,5 +31,9 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     wrapPythonPrograms
+    cat <<EOF
+IMPORTANT: Serialbox does not follow the standard Python packaging convention.
+Until this is resolved, add it to the PYTHONPATH using postShellHook.
+EOF
   '';
 }

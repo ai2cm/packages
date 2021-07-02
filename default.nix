@@ -15,6 +15,8 @@ let
     pfunit = self.callPackage ./pfunit { };
     serialbox = self.callPackage ./serialbox { };
     serialboxNoFortran = self.callPackage ./serialbox { enableFortran = false; };
+    python39 = super.python39.override { packageOverrides = (packageOverrides self); };
+    python38 = super.python38.override { packageOverrides = (packageOverrides self); };
     python3 = super.python3.override { packageOverrides = (packageOverrides self); };
     python = super.python.override { packageOverrides = (packageOverrides self); };
   };
