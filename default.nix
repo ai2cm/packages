@@ -8,10 +8,10 @@ let
   packageOverrides = import ./python.nix;
   overlay = self: super: rec {
     # ensure that everything uses mpich for mpi
-    fms = self.callPackage ./nix/fms { src=fv3gfs-fortran-src; };
-    esmf = self.callPackage ./nix/esmf { };
-    nceplibs = self.callPackage ./nix/nceplibs { };
-    fv3 = self.callPackage ./nix/fv3 { src=fv3gfs-fortran-src; };
+    fms = self.callPackage ./fms { src=fv3gfs-fortran-src; };
+    esmf = self.callPackage ./esmf { };
+    nceplibs = self.callPackage ./nceplibs { };
+    fv3 = self.callPackage ./fv3 { src=fv3gfs-fortran-src; };
     pfunit = self.callPackage ./pfunit { };
     serialbox = self.callPackage ./serialbox { };
     serialboxNoFortran = self.callPackage ./serialbox { enableFortran = false; };
