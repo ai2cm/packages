@@ -1,0 +1,12 @@
+diff --git a/setup.cfg b/setup.cfg
+index 729d6076..0a18a532 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -45,7 +45,6 @@ install_requires =
+     black>=19.3b0
+     cached-property>=1.5
+     click>=7.1
+-    dace@git+https://github.com/spcl/dace.git
+     jinja2>=2.10
+     numpy>=1.15, <1.21 # test_numpy_patch fails for 1.21
+     packaging>=20.0
