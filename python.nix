@@ -194,7 +194,7 @@ pkgs: self: super: {
     };
   };
 
-  dace = import ./dace { inherit pkgs self super; };
-  gt4py = import ./gt4py { inherit pkgs self super; };
+  dace = self.callPackage ./dace {};
+  gt4py = self.callPackage ./gt4py {};
 
 }
