@@ -38,4 +38,8 @@ buildPythonPackage rec {
 
   disabled = pythonOlder "3.8";
   doCheck = false;
+
+  # Would like to use this but check complains of lack of .dace.conf file
+  # doCheck = true;
+  # pythonImportCheck = [ "gt4py" ];
 }

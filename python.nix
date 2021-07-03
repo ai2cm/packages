@@ -162,6 +162,8 @@ pkgs: self: super: {
 
   };
 
+  fv3gfs-wrapper = self.callPackage ./wrapper.nix { };
+
   devtools = self.buildPythonPackage rec {
     pname = "devtools";
     version = "0.6.1";
@@ -172,6 +174,7 @@ pkgs: self: super: {
     doCheck = false;
   };
 
+  # Included because version 0.6.0 in nixpkgs 21.05 is broken in Python 3.9
   typing-inspect = self.buildPythonPackage rec {
     pname = "typing-inspect";
     version = "0.7.1";
@@ -186,15 +189,9 @@ pkgs: self: super: {
       typing-extensions
       mypy-extensions
     ];
-    meta = with super.lib; {
-      description = "Runtime inspection utilities for Python typing module";
-      homepage = "https://github.com/ilevkivskyi/typing_inspect";
-      icense = licenses.mit;
-      maintainers = with maintainers; [ albakham ];
-    };
   };
 
   dace = self.callPackage ./dace {};
-  gt4py = self.callPackage ./gt4py {};
 
+  gt4py = self.callPackage ./gt4py {};
 }
