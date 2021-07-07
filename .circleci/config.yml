@@ -11,13 +11,14 @@ jobs:
     docker:
       - image: nixos/nix:latest
         environment:
-          CACHIX_NAME: mycache
+          CACHIX_NAME: vulcanclimatemodeling
     steps:
       - checkout
       - run:
           name: Set up Cachix
           command: |
             nix-env -iA nixpkgs.cachix nixpkgs.bash
+            cachix authtoken $CACHIX_AUTH_TOKEN
             cachix use $CACHIX_NAME
             nix path-info --all > /tmp/store-path-pre-build
       - run: nix build -f release.nix
