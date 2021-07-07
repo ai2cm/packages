@@ -1,20 +1,5 @@
-{
-  stdenv
-  ,bash
-  ,rsync
-  ,gfortran
-  ,mpich
-  ,automake
-  ,autoconf
-  ,m4
-  ,libtool
-  ,bats
-  ,netcdffortran
-  ,netcdf
-  ,lib
-  ,llvmPackages
-  ,src
-} :
+{ stdenv, bash, rsync, gfortran, mpich, automake, autoconf, m4, libtool, bats
+, netcdffortran, netcdf, lib, llvmPackages, src }:
 stdenv.mkDerivation {
   pname = "fms";
   version = "0.0.0";
@@ -23,7 +8,18 @@ stdenv.mkDerivation {
 
   # nativeBuildInputs = [ m4 ];
   # buildInputs = [ hdf5 curl mpi ];
-  buildInputs = [ bash rsync gfortran mpich automake autoconf m4 libtool bats netcdffortran netcdf 
+  buildInputs = [
+    bash
+    rsync
+    gfortran
+    mpich
+    automake
+    autoconf
+    m4
+    libtool
+    bats
+    netcdffortran
+    netcdf
     (lib.optional stdenv.isDarwin llvmPackages.openmp)
   ];
   inherit netcdffortran;

@@ -185,13 +185,10 @@ pkgs: self: super: {
       sha256 = "1al2lyi3r189r5xgw90shbxvd88ic4si9w7n3d9lczxiv6bl0z84";
     };
 
-    propagatedBuildInputs = with self; [
-      typing-extensions
-      mypy-extensions
-    ];
+    propagatedBuildInputs = with self; [ typing-extensions mypy-extensions ];
   };
 
-  dace = self.callPackage ./dace {};
+  dace = self.callPackage ./dace { };
 
-  gt4py = self.callPackage ./gt4py {};
+  gt4py = self.callPackage ./gt4py { };
 }

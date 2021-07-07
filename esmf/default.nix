@@ -1,13 +1,5 @@
-{
-  stdenvNoCC
-  ,netcdffortran
-  ,gfortran
-  ,mpich
-  ,coreutils
-  ,which
-  ,llvmPackages
-  ,lib
-}:
+{ stdenvNoCC, netcdffortran, gfortran, mpich, coreutils, which, llvmPackages
+, lib }:
 stdenvNoCC.mkDerivation rec {
   pname = "esmf";
   version = "0.0.0";
@@ -16,7 +8,6 @@ stdenvNoCC.mkDerivation rec {
     url = "https://git.code.sf.net/p/esmf/esmf";
     rev = "f5d862d2ec066e76647f53c239b8c58c7af28e45";
   };
-
 
   buildPhase = ''
     # set build variables
@@ -42,22 +33,28 @@ stdenvNoCC.mkDerivation rec {
 
   # need to fix the linked libraries for some reason.
   # The "id" of these dylibs points to the build directory
-  postFixup = stdenvNoCC.lib.optionalString stdenvNoCC.isDarwin  ''
-  function fixNameLib {
-      install_name_tool -id "$1" "$1"
-  }
-  fixNameLib $out/lib/libesmf.dylib
-  fixNameLib $out/lib/libesmf_fullylinked.dylib 
+  postFixup = stdenvNoCC.lib.optionalString stdenvNoCC.isDarwin ''
+    function fixNameLib {
+        install_name_tool -id "$1" "$1"
+    }
+    fixNameLib $out/lib/libesmf.dylib
+    fixNameLib $out/lib/libesmf_fullylinked.dylib
   '';
 
   # nativeBuildInputs = [ m4 ];
   # buildInputs = [ hdf5 curl mpi ];
-  buildInputs = [ netcdffortran gfortran mpich gfortran.cc coreutils which 
+  buildInputs = [
+    netcdffortran
+    gfortran
+    mpich
+    gfortran.cc
+    coreutils
+    which
     (lib.optional stdenvNoCC.isDarwin llvmPackages.openmp)
-  ] ;
+  ];
   inherit netcdffortran gfortran;
-  CXX="${gfortran}/bin/g++";
-  CC="${gfortran}/bin/gcc";
-  ESMF_CXXCOMPILER="${CXX}";
-  ESMF_CCOMPILER="${CC}";
+  CXX = "${gfortran}/bin/g++";
+  CC = "${gfortran}/bin/gcc";
+  ESMF_CXXCOMPILER = "${CXX}";
+  ESMF_CCOMPILER = "${CC}";
 }

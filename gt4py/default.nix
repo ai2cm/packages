@@ -34,9 +34,10 @@ buildPythonPackage rec {
     xxhash
   ];
   nativeBuildInputs = [ git ];
+
   patches = [ ./remove-dace-req.patch ];
 
-  disabled = pythonOlder "3.8";
+  disabled = pythonOlder "3.8" || pydantic.version >= "1.8";
   doCheck = false;
 
   # Would like to use this but check complains of lack of .dace.conf file
