@@ -21,7 +21,7 @@ jobs:
             cachix authtoken $CACHIX_AUTH_TOKEN
             cachix use $CACHIX_NAME
             nix path-info --all > /tmp/store-path-pre-build
-      - run: nix build -f release.nix
+      - run: nix build --verbose -f release.nix
       - run: nix-shell --run "echo nix-shell successfully entered"
       - run:
           name: Push to Cachix
