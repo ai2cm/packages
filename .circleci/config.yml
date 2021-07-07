@@ -1,0 +1,28 @@
+version: 2.1
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build
+
+jobs:
+  build:
+    docker:
+      - image: nixos/nix:latest
+        environment:
+          CACHIX_NAME: mycache
+    steps:
+      - checkout
+      - run:
+          name: Set up Cachix
+          command: |
+            nix-env -iA nixpkgs.cachix nixpkgs.bash
+            cachix use $CACHIX_NAME
+            nix path-info --all > /tmp/store-path-pre-build
+      - run: nix build -f release.nix
+      - run: nix-shell --run "echo nix-shell successfully entered"
+      - run:
+          name: Push to Cachix
+          command: |
+            bash -c "comm -13 <(sort /tmp/store-path-pre-build | grep -v '\.drv$') <(nix path-info --all | grep -v '\.drv$' | sort) | cachix push $CACHIX_NAME"
