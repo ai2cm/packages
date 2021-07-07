@@ -17,7 +17,7 @@ jobs:
       - run:
           name: Set up Cachix
           command: |
-            nix-env -iA nixpkgs.cachix nixpkgs.bash
+            nix-env -iA nixpkgs.cachix nixpkgs.bash nixpkgs.git nixpkgs.openssl
             cachix authtoken $CACHIX_AUTH_TOKEN
             cachix use $CACHIX_NAME
             nix path-info --all > /tmp/store-path-pre-build
