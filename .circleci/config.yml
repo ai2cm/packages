@@ -1,0 +1,31 @@
+version: 2.1
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build
+
+jobs:
+  build:
+    resource_class: large
+    docker:
+      - image: nixos/nix:2.3.12
+        environment:
+          CACHIX_NAME: vulcanclimatemodeling
+    steps:
+      - checkout
+      - run:
+          name: Set up Cachix
+          command: |
+            nix-env -iA nixpkgs.cachix nixpkgs.bash nixpkgs.git nixpkgs.openssl
+            cachix authtoken $CACHIX_AUTH_TOKEN
+            cachix use $CACHIX_NAME
+            nix path-info --all > /tmp/store-path-pre-build
+      - run:
+          command: nix-build --max-jobs 4 --verbose release.nix
+          no_output_timeout: 1h
+      - run:
+          name: Push to Cachix
+          command: |
+            bash -c "comm -13 <(sort /tmp/store-path-pre-build | grep -v '\.drv$') <(nix path-info --all | grep -v '\.drv$' | sort) | cachix push $CACHIX_NAME"
