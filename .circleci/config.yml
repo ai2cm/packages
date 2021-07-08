@@ -8,6 +8,7 @@ workflows:
 
 jobs:
   build:
+    resource_class: large
     docker:
       - image: nixos/nix:2.3.12
         environment:
