@@ -23,8 +23,10 @@ jobs:
             cachix use $CACHIX_NAME
             nix path-info --all > /tmp/store-path-pre-build
       - run:
+          name: pre-commit
+          command: nix-build release.nix -A pre-commit-check
+      - run:
           command: nix-build --max-jobs 4 --verbose release.nix
-          no_output_timeout: 1h
       - run:
           name: Push to Cachix
           command: |
