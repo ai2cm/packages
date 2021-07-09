@@ -6,9 +6,9 @@ buildPythonPackage rec {
   pname = "fv3gfs-wrapper";
 
   src = builtins.fetchGit {
-      url = "https://github.com/VulcanClimateModeling/fv3gfs-wrapper";
-      rev = "fc5475289a4bd73a0ec0212f8a1b672db29bd455";
-      ref ="nix-on-mac";
+    url = "https://github.com/VulcanClimateModeling/fv3gfs-wrapper";
+    rev = "fc5475289a4bd73a0ec0212f8a1b672db29bd455";
+    ref = "nix-on-mac";
   };
 
   checkInputs = [ ];

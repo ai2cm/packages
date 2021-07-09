@@ -1,7 +1,7 @@
 { buildPythonPackage, fetchFromGitHub, attrs, black, cached-property, click
 , dace, jinja2, numpy, packaging, pybind11, tabulate, typing-extensions, boltons
-, cytoolz, devtools, Mako, networkx, pydantic_1_7_4, toolz, typing-inspect, xxhash
-, git, pythonOlder, }:
+, cytoolz, devtools, Mako, networkx, pydantic_1_7_4, toolz, typing-inspect
+, xxhash, git, pythonOlder, }:
 buildPythonPackage rec {
   pname = "gt4py";
   version = "0.1.0";
