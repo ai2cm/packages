@@ -16,6 +16,8 @@ There are two options:
 
 This repository offers the developer a `shell.nix` that, when instantiated using the `nix-shell`
 command, drops into an shell with `git`, `nixfmt` and `pre-commit` installed.
+Pre-commit can be used on its own, or in conjunction with git.
+The pre-commit git hook and `.pre-commit-config.yaml` are generated the first time the shell is instantiated.
 
 A developer looking to add to this repository could use this together with
 [direnv](https://direnv.net/) by adding a `.envrc` file with the command
