@@ -7,7 +7,7 @@ buildPythonPackage rec {
   version = "0.10.8";
   src = fetchFromGitHub {
     owner = "spcl";
-    rev = "43fe08b12c0c94d2d61dc46c3748543135b8cd11";
+    rev = "54e707ee675ca3ac68199d6b0e132c8639fb4cd2";
     repo = pname;
     sha256 = "00c6x8ryrsxzjbpw5d35cj8rzrzcsklqg5fdfjih0h166cmpl55v";
   };
