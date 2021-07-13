@@ -150,6 +150,18 @@ pkgs: self: super: {
     doCheck = false;
   };
 
+  pydantic_1_7_4 = super.pydantic.overridePythonAttrs rec {
+    # gt4py is not compatible with newer versions of this dep
+    pname = self.pydantic.pname;
+    version = "1.7.4";
+    src = super.fetchPypi {
+      inherit pname version;
+      sha256 = "sha256:15b50gn1vpbk390pbnxgj4dc61n75r6da4y8b3d55fszaayvq6ha";
+    };
+    # the new pytest doesn't work with this older version
+    doCheck = false;
+  };
+
   pytest-regtest = self.buildPythonPackage rec {
     pname = "pytest-regtest";
     version = "1.4.5";

@@ -27,12 +27,10 @@ let
   };
   nixpkgs = import (builtins.fetchTarball {
     # Descriptive name to make the store path easier to identify
-    name = "nixos-unstable-as-of-2021-19";
-    # this commit has caches on cache.nixos.org, but doesn't update the mpich
-    # version from 20.09
+    name = "nixos-release-21.05";
     url =
-      "https://github.com/nixos/nixpkgs/archive/7750e6a2c95dd157d4f75a6af00923910870dd5e.tar.gz";
+      "https://github.com/nixos/nixpkgs/archive/977b522d3101ad847fd51d695b817fe2cf8efaf6.tar.gz";
     # Hash obtained using `nix-prefetch-url --unpack <url>`
-    sha256 = "0mw0w4mk65a6k2v6mdwa5id5rq01sjbx1klcmri9m7i77q7mzd5x";
+    sha256 = "sha256:13r8pdnlpxqb3jypf87yc32f9vc860l7vcz9kashh1wsy48r5a6x";
   }) { overlays = [ overlay ]; };
 in nixpkgs
