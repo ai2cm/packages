@@ -23,7 +23,7 @@ stdenv.mkDerivation {
   patchPhase = ''
 
     patchShebangs FV3/configure
-      # need to call this since usr/bin/env isn't 
+      # need to call this since usr/bin/env isn't
       # installed in sandboxed build environment
       # there goes 1 hr...
       patchShebangs FV3/mkDepends.pl
@@ -54,4 +54,3 @@ stdenv.mkDerivation {
   NCEPLIBS_DIR = "${nceplibs}/lib";
   OMPI_CC = "${gfortran.cc}/bin/gcc";
 }
-

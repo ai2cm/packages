@@ -38,7 +38,7 @@ stdenvNoCC.mkDerivation rec {
         install_name_tool -id "$1" "$1"
     }
     fixNameLib $out/lib/libesmf.dylib
-    fixNameLib $out/lib/libesmf_fullylinked.dylib 
+    fixNameLib $out/lib/libesmf_fullylinked.dylib
   '';
 
   # nativeBuildInputs = [ m4 ];

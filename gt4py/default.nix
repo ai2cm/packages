@@ -38,6 +38,7 @@ buildPythonPackage rec {
   buildInputs =
     [ git boost (lib.optional stdenv.isDarwin llvmPackages.openmp) ];
 
+  # Disabled should also check for (pydantic.version >= "1.8")
   disabled = pythonOlder "3.8";
 
   # The git link to DaCe breaks resolution of the dependencies
