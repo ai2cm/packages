@@ -13,6 +13,8 @@ let
     nceplibs = self.callPackage ./nceplibs { };
     fv3 = self.callPackage ./fv3 { src = fv3gfs-fortran-src; };
     pfunit = self.callPackage ./pfunit { };
+    gridtools1 = self.callPackage ./gridtools/1.nix { };
+    gridtools2 = self.callPackage ./gridtools/2.nix { };
     serialbox = self.callPackage ./serialbox { };
     serialboxNoFortran =
       self.callPackage ./serialbox { enableFortran = false; };
