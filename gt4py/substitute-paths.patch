@@ -1,24 +1,30 @@
 diff --git a/src/gt4py/config.py b/src/gt4py/config.py
-index 1cdc3136f..06dae5292 100644
+index 1cdc3136f..78aee2553 100644
 --- a/src/gt4py/config.py
 +++ b/src/gt4py/config.py
-@@ -24,7 +24,7 @@ GT4PY_INSTALLATION_PATH: str = os.path.dirname(os.path.abspath(__file__))
- 
+@@ -23,8 +23,8 @@ from typing import Any, Dict
+ GT4PY_INSTALLATION_PATH: str = os.path.dirname(os.path.abspath(__file__))
+
  # Default paths (taken from user's environment vars when possible)
- BOOST_ROOT: str = os.environ.get(
+-BOOST_ROOT: str = os.environ.get(
 -    "BOOST_ROOT", os.environ.get("BOOST_HOME", os.path.abspath("/usr/local"))
-+    "@boost@", os.environ.get("BOOST_HOME", os.path.abspath("/usr/local"))
++BOOST_ROOT: str = (
++    os.environ.get("BOOST_ROOT", None) or os.environ.get("BOOST_HOME", None) or "@boostdev@"
  )
- 
+
  CUDA_ROOT: str = os.environ.get(
-@@ -49,8 +49,8 @@ build_settings: Dict[str, Any] = {
+@@ -49,10 +49,10 @@ build_settings: Dict[str, Any] = {
      "cuda_include_path": os.path.join(CUDA_ROOT, "include"),
      "cuda_library_path": os.path.join(CUDA_ROOT, "lib64"),
      "cuda_arch": os.environ.get("CUDA_ARCH", None),
 -    "gt_include_path": os.environ.get("GT_INCLUDE_PATH", GT_INCLUDE_PATH),
 -    "gt2_include_path": os.environ.get("GT2_INCLUDE_PATH", GT2_INCLUDE_PATH),
+-    "openmp_cppflags": os.environ.get("OPENMP_CPPFLAGS", "-fopenmp").split(),
+-    "openmp_ldflags": os.environ.get("OPENMP_LDFLAGS", "-fopenmp").split(),
 +    "gt_include_path": os.environ.get("GT_INCLUDE_PATH", "@gridtools1@/include"),
 +    "gt2_include_path": os.environ.get("GT2_INCLUDE_PATH", "@gridtools2@/include"),
-     "openmp_cppflags": os.environ.get("OPENMP_CPPFLAGS", "-fopenmp").split(),
-     "openmp_ldflags": os.environ.get("OPENMP_LDFLAGS", "-fopenmp").split(),
++    "openmp_cppflags": os.environ.get("OPENMP_CPPFLAGS", "-I@openmp@/include -fopenmp").split(),
++    "openmp_ldflags": os.environ.get("OPENMP_LDFLAGS", "-L@openmp@/lib -fopenmp").split(),
      "extra_compile_args": {
+         "cxx": [],
+         "nvcc": [
