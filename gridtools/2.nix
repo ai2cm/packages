@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
   };
 
   propagatedBuildInputs = [ boost.dev ]
-    ++ (lib.optional stdenv.isDarwin llvmPackages.openmp);
+    ++ (lib.optional stdenv.cc.isClang llvmPackages.openmp);
   nativeBuildInputs = [ git cmake cacert ];
 
   cmakeFlags = [ "-DGT_INSTALL_EXAMPLES=OFF" "-DBUILD_TESTING=OFF" ];

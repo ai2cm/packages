@@ -46,7 +46,7 @@ buildPythonPackage rec {
 
   # Build in paths to boost and gridtools
   boostdev = boost.dev;
-  openmp = if stdenv.isDarwin then llvmPackages.openmp else "/usr/lib";
+  openmp = if stdenv.cc.isClang then llvmPackages.openmp else "/usr/lib";
   inherit gridtools1 gridtools2;
   patches = [ ./substitute-paths.patch ];
   postPatch = "substituteAllInPlace src/gt4py/config.py";
