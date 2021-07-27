@@ -1,4 +1,4 @@
-pkgs: self: super: {
+pkgs: self: super: rec {
 
   call_py_fort = self.callPackage ./call_py_fort { };
 
@@ -150,9 +150,9 @@ pkgs: self: super: {
     doCheck = false;
   };
 
-  pydantic_1_7_4 = super.pydantic.overridePythonAttrs rec {
+  pydantic_1_7_4 = super.pydantic.overridePythonAttrs (old: rec {
     # gt4py is not compatible with newer versions of this dep
-    pname = self.pydantic.pname;
+    pname = old.pname;
     version = "1.7.4";
     src = super.fetchPypi {
       inherit pname version;
@@ -160,7 +160,7 @@ pkgs: self: super: {
     };
     # the new pytest doesn't work with this older version
     doCheck = false;
-  };
+  });
 
   pytest-regtest = self.buildPythonPackage rec {
     pname = "pytest-regtest";
@@ -203,4 +203,13 @@ pkgs: self: super: {
   dace = self.callPackage ./dace { };
 
   gt4py = self.callPackage ./gt4py { };
+  gt4py-dev = gt4py.overridePythonAttrs (old: rec {
+    version = "${old.version}-dev";
+    src = pkgs.fetchFromGitHub {
+      owner = "VulcanClimateModeling";
+      repo = old.pname;
+      rev = "v31";
+      sha256 = "1prq3qvhxj2zf1473k6n7vr2fgbc6f34l7f5phlm22904gyxg7qg";
+    };
+  });
 }
