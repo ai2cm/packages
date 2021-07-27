@@ -9,9 +9,9 @@ stdenv.mkDerivation rec {
     sha256 = "167v4x0905fiqw4gcjsfxvc9wrjy4hi5xvbbimr444w9g0yy4nf7";
   };
 
-  propagatedBuildInputs = [ boost.dev git cacert ]
+  propagatedBuildInputs = [ boost.dev ]
     ++ (lib.optional stdenv.isDarwin llvmPackages.openmp);
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [ git cmake cacert ];
 
   cmakeFlags = [ "-DGT_INSTALL_EXAMPLES=OFF" "-DBUILD_TESTING=OFF" ];
 }
