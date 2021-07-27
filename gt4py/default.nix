@@ -7,9 +7,9 @@ buildPythonPackage rec {
   pname = "gt4py";
   version = "0.1.0";
   src = fetchFromGitHub {
-    owner = "jdahm";
-    repo = "gt4py";
-    rev = "916c99c3a5090b746b488c93706fe27078a91562";
+    owner = "GridTools";
+    repo = pname;
+    rev = "4ddca60c288d353806c765a2f9fb574094ca207c";
     sha256 = "1kmz2vqbahpr40x4gjwiyalcskahm9xxbrv37k1j5958fbp68llp";
   };
   propagatedBuildInputs = [
