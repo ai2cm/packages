@@ -15,4 +15,5 @@ in {
   serialbox = pkgs.serialbox;
   fv3gfs-wrapper = pkgs.python3Packages.fv3gfs-wrapper;
   gt4py = pkgs.python38Packages.gt4py;
+  fv3core = pkgs.python38Packages.fv3core;
 }
