@@ -214,4 +214,6 @@ pkgs: self: super: rec {
       sha256 = "1prq3qvhxj2zf1473k6n7vr2fgbc6f34l7f5phlm22904gyxg7qg";
     };
   });
+
+  fv3core = self.callPackage ./fv3core { };
 }
