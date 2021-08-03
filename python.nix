@@ -203,6 +203,8 @@ pkgs: self: super: rec {
   dace = self.callPackage ./dace { };
 
   gt4py = self.callPackage ./gt4py { };
+
+  # This is the VCM development version of gt4py
   gt4py-dev = gt4py.overridePythonAttrs (old: rec {
     version = "${old.version}-dev";
     src = pkgs.fetchFromGitHub {
