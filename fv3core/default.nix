@@ -26,7 +26,5 @@ in buildPythonPackage rec {
 
   pipInstallFlags = [ "--no-deps" ];
   doCheck = false;
-
-  # TODO(johannd): disabled
   pythonImportCheck = [ "fv3core" ];
 }
