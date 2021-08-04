@@ -1,5 +1,5 @@
-{ buildPythonPackage, fetchFromGitHub, fv3gfs-util, f90nml, gt4py-dev, pytest
-, pytest-subtests }:
+{ buildPythonPackage, fetchFromGitHub, fv3gfs-util, f90nml, gt4py-dev, serialbox
+}:
 let
   # Newer version of fv3gfs-util -- should match submodule version
   fv3gfs-util-dev = fv3gfs-util.overridePythonAttrs (old: {
