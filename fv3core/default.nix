@@ -21,8 +21,7 @@ in buildPythonPackage rec {
     sha256 = "0krcb8l07648mrdp00ps6ykfds5jiqavhq1h3xj8cqz7xhjnazb5";
   };
 
-  propagatedBuildInputs =
-    [ f90nml fv3gfs-util-dev gt4py-dev pytest pytest-subtests ];
+  propagatedBuildInputs = [ f90nml fv3gfs-util-dev gt4py-dev serialbox ];
 
   pipInstallFlags = [ "--no-deps" ];
   doCheck = false;
