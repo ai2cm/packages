@@ -15,5 +15,5 @@ stdenv.mkDerivation rec {
 
   cmakeFlags = [ "-DGT_INSTALL_EXAMPLES=OFF" "-DBUILD_TESTING=OFF" ];
 
-  postInstall = "cp -r $curSrc/regression $out/include/regression";
+  postInstall = "cp -r $curSrc/regression $out/include/gridtools/regression";
 }
