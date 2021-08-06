@@ -14,4 +14,6 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ git cmake cacert ];
 
   cmakeFlags = [ "-DGT_INSTALL_EXAMPLES=OFF" "-DBUILD_TESTING=OFF" ];
+
+  postInstall = "cp -r $curSrc/regression $out/include/gridtools/regression";
 }
