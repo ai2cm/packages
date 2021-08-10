@@ -1,11 +1,11 @@
 diff --git a/setup.py b/setup.py
-index 06cae3ce..498b51d7 100644
+index ada55e3c..c0228e3a 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -79,7 +79,7 @@ setup(name='dace',
        include_package_data=True,
        install_requires=[
-           'numpy', 'networkx >= 2.2', 'astunparse', 'sympy', 'pyyaml', 'ply',
+           'numpy', 'networkx >= 2.5', 'astunparse', 'sympy', 'pyyaml', 'ply',
 -          'websockets', 'requests', 'flask', 'scikit-build', 'cmake', 'aenum',
 +          'websockets', 'requests', 'flask', 'scikit-build', 'aenum',
            'dataclasses; python_version < "3.7"', 'dill', 'pyreadline;platform_system=="Windows"'

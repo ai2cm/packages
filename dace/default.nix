@@ -7,9 +7,9 @@ buildPythonPackage rec {
   version = "0.10.8";
   src = fetchFromGitHub {
     owner = "spcl";
-    rev = "54e707ee675ca3ac68199d6b0e132c8639fb4cd2";
+    rev = "a654383d173881a981f34549c03cd90cc6db5594";
     repo = pname;
-    sha256 = "00c6x8ryrsxzjbpw5d35cj8rzrzcsklqg5fdfjih0h166cmpl55v";
+    sha256 = "1plvj8wf837scrmp3aqph96yw6hjnjvkg2kbfmwxs8ajlzfn1hjg";
   };
   propagatedBuildInputs = [
     aenum
