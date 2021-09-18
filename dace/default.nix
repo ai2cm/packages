@@ -9,7 +9,7 @@ buildPythonPackage rec {
     owner = "spcl";
     rev = "54e707ee675ca3ac68199d6b0e132c8639fb4cd2";
     repo = pname;
-    sha256 = "00c6x8ryrsxzjbpw5d35cj8rzrzcsklqg5fdfjih0h166cmpl55v";
+    sha256 = "1b4b0zjx732iq2ypi5q20yjc0fid35k1qzw95ar7fvfifajvdm02";
   };
   propagatedBuildInputs = [
     aenum
