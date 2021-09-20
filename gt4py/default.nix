@@ -2,7 +2,7 @@
 , cached-property, click, dace, jinja2, numpy, packaging, pybind11, tabulate
 , typing-extensions, boltons, cytoolz, devtools, Mako, networkx, pydantic_1_7_4
 , toolz, typing-inspect, xxhash, boost, gridtools1, gridtools2, git
-, llvmPackages, pythonOlder }:
+, llvmPackages, pythonOlder, callPackage }:
 buildPythonPackage rec {
   pname = "gt4py";
   version = "0.1.0";
@@ -55,4 +55,6 @@ buildPythonPackage rec {
   # # Would like to use this but check complains of lack of .dace.conf file
   # doCheck = true;
   pythonImportCheck = [ "gt4py" ];
+
+  passthru.tests = callPackage ./tests.nix { };
 }
