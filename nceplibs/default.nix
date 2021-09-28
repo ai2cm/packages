@@ -1,14 +1,14 @@
-{ stdenvNoCC, bash, fetchgit, system, rsync, gfortran, mpich, coreutils, perl }:
+{ stdenvNoCC, bash, fetchFromGitHub, system, rsync, gfortran, mpich, coreutils
+, perl }:
 stdenvNoCC.mkDerivation rec {
   pname = "nceplibs";
   version = "0.0.0";
 
-  src = fetchgit {
-    url = "https://github.com/NCAR/NCEPlibs.git";
+  src = fetchFromGitHub {
+    owner = "NCAR";
+    repo = "NCEPlibs";
     rev = "3da51e139d5cd731c9fc27f39d88cb4e1328212b";
-    sha256 = "03yjjz34452gbq292x24lvgxj4ybasm8z2aqlps0l6hg04blkhji";
-    fetchSubmodules = false;
-    leaveDotGit = true;
+    sha256 = "sha256:123h9l2gvwahgzp1h65ffqwsrsjvp40w14dxs9xifwhzp0zlspvk";
   };
 
   buildPhase = ''
