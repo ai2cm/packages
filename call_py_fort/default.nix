@@ -1,5 +1,5 @@
-{ fetchFromGitHub, lib, stdenv, gfortran, cmake, pfunit, llvmPackages, cffi
-, numpy }:
+{ fetchFromGitHub, lib, stdenv, gfortran, cmake, pfunit, llvmPackages
+, python3Packages }:
 stdenv.mkDerivation {
   name = "call_py_fort";
 
@@ -13,8 +13,10 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ pfunit ]
     ++ lib.optional stdenv.isDarwin llvmPackages.openmp;
   buildInputs = [ gfortran gfortran.cc.lib cmake gfortran.cc ];
-  propagatedBuildInputs = [ cffi numpy ];
+  propagatedBuildInputs = [ python3Packages.cffi python3Packages.numpy ];
   doCheck = true;
+
+  passthru = { pypkgs = python3Packages; };
 
   preCheck = ''
     export PYTHONPATH=$(pwd)/../test:$PYTHONPATH

@@ -7,6 +7,7 @@ in {
     src = ./.;
     hooks = { nixfmt.enable = true; };
   };
+  call_py_fort = pkgs.call_py_fort;
   fms = pkgs.fms;
   esmf = pkgs.esmf;
   nceplibs = pkgs.nceplibs;
