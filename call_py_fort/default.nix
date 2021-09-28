@@ -16,7 +16,7 @@ stdenv.mkDerivation {
   propagatedBuildInputs = [ python3Packages.cffi python3Packages.numpy ];
   doCheck = true;
 
-  passthru = { pkgs = python3Packages; };
+  passthru = { pypkgs = python3Packages; };
 
   preCheck = ''
     export PYTHONPATH=$(pwd)/../test:$PYTHONPATH
