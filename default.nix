@@ -8,6 +8,7 @@ let
   packageOverrides = import ./python.nix;
   overlay = self: super: rec {
     # ensure that everything uses mpich for mpi
+    call_py_fort = self.callPackage ./call_py_fort { };
     fms = self.callPackage ./fms { src = fv3gfs-fortran-src; };
     esmf = self.callPackage ./esmf { };
     nceplibs = self.callPackage ./nceplibs { };
