@@ -56,5 +56,19 @@ buildPythonPackage rec {
   # doCheck = true;
   pythonImportCheck = [ "gt4py" ];
 
-  passthru.tests = callPackage ./tests.nix { };
+  passthru = {
+    tests = callPackage ./tests.nix { };
+    dev-requirements = [
+      pre-commit
+      black
+      isort
+      rope
+      devtools
+      hypothesis
+      pytest
+      pytest-cache
+      pytest-cov
+      pytest-factoryboy
+    ];
+  };
 }
