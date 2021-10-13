@@ -2,7 +2,8 @@
 , cached-property, click, dace, jinja2, numpy, packaging, pybind11, tabulate
 , typing-extensions, boltons, cytoolz, devtools, Mako, networkx, pydantic_1_7_4
 , toolz, typing-inspect, xxhash, boost, gridtools1, gridtools2, git
-, llvmPackages, pythonOlder, callPackage }:
+, llvmPackages, pythonOlder, callPackage, pre-commit, isort, rope, hypothesis
+, pytest, pytest-cache, pytest-cov, pytest-factoryboy }:
 buildPythonPackage rec {
   pname = "gt4py";
   version = "0.1.0";
@@ -56,5 +57,19 @@ buildPythonPackage rec {
   # doCheck = true;
   pythonImportCheck = [ "gt4py" ];
 
-  passthru.tests = callPackage ./tests.nix { };
+  passthru = {
+    tests = callPackage ./tests.nix { };
+    dev-requirements = [
+      pre-commit
+      black
+      isort
+      rope
+      devtools
+      hypothesis
+      pytest
+      pytest-cache
+      pytest-cov
+      pytest-factoryboy
+    ];
+  };
 }
