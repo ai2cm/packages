@@ -2,8 +2,8 @@
 , cached-property, click, dace, jinja2, numpy, packaging, pybind11, tabulate
 , typing-extensions, boltons, cytoolz, devtools, Mako, networkx, pydantic_1_7_4
 , toolz, typing-inspect, xxhash, boost, gridtools1, gridtools2, git
-, llvmPackages, pythonOlder, callPackage, pre-commit, isort, rope, devtools
-, hypothesis, pytest, pytest-cache, pytest-cov, pytest-factoryboy }:
+, llvmPackages, pythonOlder, callPackage, pre-commit, isort, rope, hypothesis
+, pytest, pytest-cache, pytest-cov, pytest-factoryboy }:
 buildPythonPackage rec {
   pname = "gt4py";
   version = "0.1.0";
