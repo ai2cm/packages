@@ -40,18 +40,18 @@ jobs:
       CACHIX_NAME: vulcanclimatemodeling
     steps:
       - run:
-        name: Install Nix
-        command: |
-          curl -L -O https://nixos.org/nix/install
-          sh install --darwin-use-unencrypted-nix-store-volume
-          rm -f install
+          name: Install Nix
+          command: |
+            curl -L -O https://nixos.org/nix/install
+            sh install --darwin-use-unencrypted-nix-store-volume
+            rm -f install
       - run:
-        name: Set up Cachix
-        command: |
-          nix-env -iA nixpkgs.cachix nixpkgs.bash nixpkgs.git nixpkgs.openssl
-          cachix authtoken $CACHIX_AUTH_TOKEN
-          cachix use $CACHIX_NAME
-          nix path-info --all > /tmp/store-path-pre-build
+          name: Set up Cachix
+          command: |
+            nix-env -iA nixpkgs.cachix nixpkgs.bash nixpkgs.git nixpkgs.openssl
+            cachix authtoken $CACHIX_AUTH_TOKEN
+            cachix use $CACHIX_NAME
+            nix path-info --all > /tmp/store-path-pre-build
       - checkout
       - run:
           name: Build
