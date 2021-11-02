@@ -45,7 +45,7 @@ jobs:
             curl -k https://curl.se/ca/cacert.pem -o ~/.cacert.pem
             export CURL_CA_BUNDLE=~/.cacert.pem
             curl -L -O https://nixos.org/nix/install
-            sh install --no-daemon
+            sh install
             rm -f install
       - run:
           name: Set up Cachix
