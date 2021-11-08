@@ -34,6 +34,7 @@ jobs:
           command: |
             bash -c "comm -13 <(sort /tmp/store-path-pre-build | grep -v '\.drv$') <(nix path-info --all | grep -v '\.drv$' | sort) | cachix push $CACHIX_NAME"
   build-mac:
+    resource_class: large
     macos:
       xcode: 11.3.0
     environment:
@@ -44,9 +45,7 @@ jobs:
           command: |
             curl -k https://curl.se/ca/cacert.pem -o ~/.cacert.pem
             export CURL_CA_BUNDLE=~/.cacert.pem
-            curl -L -O https://nixos.org/nix/install
-            echo n | sh install
-            rm -f install
+            sh <(curl -L https://nixos.org/nix/install) --no-daemon
       - run:
           name: Set up Cachix
           command: |
