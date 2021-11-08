@@ -34,7 +34,6 @@ jobs:
           command: |
             bash -c "comm -13 <(sort /tmp/store-path-pre-build | grep -v '\.drv$') <(nix path-info --all | grep -v '\.drv$' | sort) | cachix push $CACHIX_NAME"
   build-mac:
-    resource_class: large
     macos:
       xcode: 11.3.0
     environment:
