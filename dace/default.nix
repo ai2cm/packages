@@ -7,9 +7,9 @@ buildPythonPackage rec {
   version = "0.10.8";
   src = fetchFromGitHub {
     owner = "spcl";
-    rev = "d4f32d97cd1fafd9ad8e52ca7ad5283461c64e78";
+    rev = "aa94b8f603e2341215647ae0ce4056df55049fe2";
     repo = pname;
-    sha256 = "0xsha6qsbp123a6lpjrfwkpnmjlzazfff13pln9jb1wipl0ax6y3";
+    sha256 = "1mnqajqg2mk88paxxzl0wqm0fyv8870acvak5kfk2lh2zhwmlpml";
     fetchSubmodules = true;
   };
   propagatedBuildInputs = [
