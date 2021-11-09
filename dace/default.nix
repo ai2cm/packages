@@ -39,7 +39,6 @@ buildPythonPackage rec {
     websockets
     werkzeug
     dill
-    cmake
   ];
   nativeBuildInputs = [ cmake ];
   patches = [ ./remove-cmake-req.patch ];
