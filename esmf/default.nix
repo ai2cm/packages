@@ -2,7 +2,7 @@
 , llvmPackages, lib }:
 stdenvNoCC.mkDerivation rec {
   pname = "esmf";
-  version = "8.2.0";
+  version = "8.0.0";
 
   src = fetchFromGitHub {
     owner = "esmf-org";
