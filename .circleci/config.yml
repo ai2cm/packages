@@ -4,10 +4,11 @@ workflows:
   version: 2
   workflow:
     jobs:
-      - build
+      - build-linux
+      - build-mac
 
 jobs:
-  build:
+  build-linux:
     resource_class: large
     docker:
       - image: nixos/nix:2.3.12
@@ -26,6 +27,34 @@ jobs:
           name: pre-commit
           command: nix-build release.nix -A pre-commit-check
       - run:
+          name: Build
+          command: nix-build --max-jobs 4 --verbose release.nix
+      - run:
+          name: Push to Cachix
+          command: |
+            bash -c "comm -13 <(sort /tmp/store-path-pre-build | grep -v '\.drv$') <(nix path-info --all | grep -v '\.drv$' | sort) | cachix push $CACHIX_NAME"
+  build-mac:
+    macos:
+      xcode: 11.3.0
+    environment:
+      CACHIX_NAME: vulcanclimatemodeling
+    steps:
+      - run:
+          name: Install Nix
+          command: |
+            curl -k https://curl.se/ca/cacert.pem -o ~/.cacert.pem
+            export CURL_CA_BUNDLE=~/.cacert.pem
+            sh <(curl -L https://releases.nixos.org/nix/nix-2.3.16/install) --darwin-use-unencrypted-nix-store-volume --no-daemon
+      - run:
+          name: Set up Cachix
+          command: |
+            nix-env -iA nixpkgs.cachix nixpkgs.bash nixpkgs.git nixpkgs.openssl
+            cachix authtoken $CACHIX_AUTH_TOKEN
+            cachix use $CACHIX_NAME
+            nix path-info --all > /tmp/store-path-pre-build
+      - checkout
+      - run:
+          name: Build
           command: nix-build --max-jobs 4 --verbose release.nix
       - run:
           name: Push to Cachix
