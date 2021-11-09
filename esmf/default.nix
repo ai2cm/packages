@@ -1,12 +1,14 @@
-{ stdenvNoCC, netcdffortran, gfortran, mpich, coreutils, which, llvmPackages
-, lib }:
+{ stdenvNoCC, fetchFromGitHub, netcdffortran, gfortran, mpich, coreutils, which
+, llvmPackages, lib }:
 stdenvNoCC.mkDerivation rec {
   pname = "esmf";
-  version = "0.0.0";
+  version = "8.2.0";
 
-  src = builtins.fetchGit {
-    url = "https://git.code.sf.net/p/esmf/esmf";
-    rev = "f5d862d2ec066e76647f53c239b8c58c7af28e45";
+  src = fetchFromGitHub {
+    owner = "esmf-org";
+    repo = pname;
+    rev = "ESMF_8_2_0";
+    sha256 = "0aw02mk04pha9p7s2lsba5f4jbyj34dxjd2q4bi883hgn58bvjfr";
   };
 
   buildPhase = ''
@@ -22,11 +24,11 @@ stdenvNoCC.mkDerivation rec {
 
     export ESMF_NETCDF_INCLUDE=$netcdffortran/include
     export ESMF_NETCDF_LIBS="-lnetcdf -lnetcdff"
-    export ESMF_BOPT=O3
+    export ESMF_BOPT=O
     export ESMF_CXXCOMPILEOPTS="$ESMF_CXXCOMPILEOPTS -Wno-format-security"
 
     # compile
-    make lib -j8
+    make -j$NIX_BUILD_CORES
     make install
     make installcheck
   '';

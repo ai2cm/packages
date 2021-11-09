@@ -6,7 +6,7 @@ stdenv.mkDerivation {
     repo = "pFUnit";
     rev = "v4.2.1";
     fetchSubmodules = true;
-    sha256 = "sha256-yjuJHvJ83PAQBDDk7TD4b6VWGoKbiexdjBCTLsNIIxI=";
+    sha256 = "yjuJHvJ83PAQBDDk7TD4b6VWGoKbiexdjBCTLsNIIxI=";
 
   };
   buildInputs = [ python3 gfortran cmake gfortran.cc m4 ];
