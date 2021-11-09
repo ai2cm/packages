@@ -41,7 +41,9 @@ buildPythonPackage rec {
     dill
     cmake
   ];
+  nativeBuildInputs = [ cmake ];
   patches = [ ./remove-cmake-req.patch ];
+
   dontUseCmakeConfigure = true;
   disabled = pythonOlder "3.6";
 
