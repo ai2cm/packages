@@ -44,5 +44,9 @@ buildPythonPackage rec {
   patches = [ ./remove-cmake-req.patch ];
   dontUseCmakeConfigure = true;
   disabled = pythonOlder "3.6";
+
+  pythonImportCheck = [ "dace" ];
+
+  # Complains: error: [Errno 2] No such file or directory: '/homeless-shelter/.dace.conf'
   doCheck = false;
 }
