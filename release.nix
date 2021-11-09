@@ -19,4 +19,5 @@ in {
   gridtools2 = pkgs.gridtools2;
   gt4py = pkgs.python38Packages.gt4py;
   fv3core = pkgs.python38Packages.fv3core;
+  nptyping = pkgs.python38Packages.nptyping;
 }
