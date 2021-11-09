@@ -7,8 +7,8 @@ stdenvNoCC.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "esmf-org";
     repo = pname;
-    rev = "ESMF_8_2_0";
-    sha256 = "0aw02mk04pha9p7s2lsba5f4jbyj34dxjd2q4bi883hgn58bvjfr";
+    rev = "ESMF_8_0_0";
+    sha256 = "07lvjsy8lfbv6vlwdqjhm67b32vaqb65s41sch0ay5ylfbp1jg6z";
   };
 
   buildPhase = ''
