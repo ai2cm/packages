@@ -216,4 +216,39 @@ pkgs: self: super: rec {
   });
 
   fv3core = self.callPackage ./fv3core { };
+
+  typish = self.buildPythonPackage rec {
+    pname = "typish";
+    version = "1.9.3";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "ramonhagenaars";
+      repo = pname;
+      rev = "v" + version;
+      sha256 = "0mc5hw92f15mwd92rb2q9isc4wi7xq76449w7ph5bskcspas0wrf";
+    };
+
+    checkInputs = with self; [ numpy nptyping pytest ];
+    checkPhase = "pytest";
+
+    doCheck = false;
+  };
+
+  nptyping = self.buildPythonPackage rec {
+    pname = "nptyping";
+    version = "1.4.4";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "ramonhagenaars";
+      repo = pname;
+      rev = "v" + version;
+      sha256 = "15l0p2sklx7yjqd5jykzg73a45scnc8mwg7pvks736zxz6wjim3k";
+    };
+
+    propagatedBuildInputs = with self; [ numpy typish ];
+
+    checkInputs = with self; [ pytest ];
+    checkPhase = "pytest";
+    doCheck = true;
+  };
 }
