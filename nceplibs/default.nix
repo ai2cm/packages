@@ -8,7 +8,7 @@ stdenvNoCC.mkDerivation rec {
     owner = "NCAR";
     repo = pname;
     rev = "3da51e139d5cd731c9fc27f39d88cb4e1328212b";
-    sha256 = "sha256:123h9l2gvwahgzp1h65ffqwsrsjvp40w14dxs9xifwhzp0zlspvk";
+    sha256 = "123h9l2gvwahgzp1h65ffqwsrsjvp40w14dxs9xifwhzp0zlspvk";
   };
 
   buildPhase = ''
