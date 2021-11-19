@@ -1,17 +1,17 @@
 { stdenv, lib, buildPythonPackage, fetchFromGitHub, attrs, black
 , cached-property, click, dace, jinja2, numpy, packaging, pybind11, tabulate
-, typing-extensions, boltons, cytoolz, devtools, Mako, networkx, pydantic_1_7_4
-, toolz, typing-inspect, xxhash, boost, gridtools1, gridtools2, git
-, llvmPackages, pythonOlder, callPackage, pre-commit, isort, rope, hypothesis
-, pytest, pytest-cache, pytest-cov, pytest-factoryboy }:
+, typing-extensions, boltons, cytoolz, devtools, Mako, networkx, pydantic, toolz
+, typing-inspect, xxhash, boost, gridtools1, gridtools2, git, llvmPackages
+, pythonOlder, callPackage, pre-commit, isort, rope, hypothesis, pytest
+, pytest-cache, pytest-cov, pytest-factoryboy, sphinx, sphinx_rtd_theme }:
 buildPythonPackage rec {
   pname = "gt4py";
   version = "0.1.0";
   src = fetchFromGitHub {
     owner = "GridTools";
     repo = pname;
-    rev = "d32e082d22b55f0387cdd56ac256bfb97d1ab2c7";
-    sha256 = "0mlc187xj0y3kn9n0jcpch6j4i7zz0pxj3axwbhfkd4s7lsbbi13";
+    rev = "12bdb9d661e48f196f301d1d6bf1584b6cb5c217";
+    sha256 = "1iacjkssb1nl6gx7c3w7yqf1hfz0yxgd5219n53hjc1wmfx43f6a";
   };
   propagatedBuildInputs = [
     attrs
@@ -30,13 +30,14 @@ buildPythonPackage rec {
     devtools
     Mako
     networkx
-    pydantic_1_7_4
+    pydantic
     toolz
     typing-inspect
     gridtools1
     gridtools2
     xxhash
   ];
+  nativeBuildInputs = [ git ];
 
   # Disabled should also check for (pydantic.version >= "1.8")
   disabled = pythonOlder "3.8";
@@ -70,6 +71,8 @@ buildPythonPackage rec {
       pytest-cache
       pytest-cov
       pytest-factoryboy
+      sphinx
+      sphinx_rtd_theme
     ];
   };
 }
