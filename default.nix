@@ -1,9 +1,9 @@
 # Copied from https://nixos.org/nixos/nix-pills/callpackage-design-pattern.html
 let
-  fv3gfs-fortran-src = builtins.fetchGit {
-    url = "https://github.com/VulcanClimateModeling/fv3gfs-fortran.git";
-    ref = "master";
-    rev = "2d0ffc194f1b2f4974fcb5b61ab0dcef0b839854";
+  fv3gfs-fortran-src = builtins.fetchTarball {
+    url =
+      "https://github.com/ai2cm/fv3gfs-fortran/archive/2d0ffc194f1b2f4974fcb5b61ab0dcef0b839854.tar.gz";
+    sha256 = "1s6988s8kwpk2d3h5cs8p6avyswmbmxdf6aa516asdm2ga1fw442";
   };
   packageOverrides = import ./python.nix;
   overlay = self: super: rec {
@@ -34,6 +34,6 @@ let
     url =
       "https://github.com/nixos/nixpkgs/archive/977b522d3101ad847fd51d695b817fe2cf8efaf6.tar.gz";
     # Hash obtained using `nix-prefetch-url --unpack <url>`
-    sha256 = "sha256:13r8pdnlpxqb3jypf87yc32f9vc860l7vcz9kashh1wsy48r5a6x";
+    sha256 = "13r8pdnlpxqb3jypf87yc32f9vc860l7vcz9kashh1wsy48r5a6x";
   }) { overlays = [ overlay ]; };
 in nixpkgs
