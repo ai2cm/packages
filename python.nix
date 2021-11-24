@@ -190,6 +190,35 @@ pkgs: self: super: rec {
 
   dace = self.callPackage ./dace { };
 
+  serialbox = self.buildPythonPackage rec {
+    pname = "serialbox";
+    version = "2.6.1";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "GridTools";
+      repo = pname;
+      rev = "e1406251e11c1ebafef5f1a896dde4f0cecc1f01";
+      sha256 = "MYAkVjt/pb9qMtTIPhXKTqbkip0k/b6ZVwPufAm2UCo=";
+    };
+
+    propagatedBuildInputs = [ self.setuptools self.numpy ];
+    nativeBuildInputs = [ pkgs.cmake boost boost.dev ];
+    dontUseCmakeConfigure = true;
+
+    boost = pkgs.boost;
+    patches = [ ./serialbox/boost.patch ];
+    boostincdir = "${boost.dev}/include";
+    boostlibdir = "${boost}/lib";
+    postPatch = "substituteAllInPlace setup.py";
+
+    # It builds in the TMPDIR source directory
+    sourceRoot = "source/src/serialbox-python";
+    preBuild = "chmod -R +w $TMPDIR";
+
+    doCheck = false;
+    pythonImportCheck = [ "serialbox" ];
+  };
+
   gt4py = self.callPackage ./gt4py { };
 
   # This is the VCM development version of gt4py
