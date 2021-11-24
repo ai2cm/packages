@@ -17,6 +17,7 @@ in {
   fv3gfs-wrapper = pkgs.python3Packages.fv3gfs-wrapper;
   gridtools1 = pkgs.gridtools1;
   gridtools2 = pkgs.gridtools2;
+  serialbox = pkgs.python38Packages.serialbox;
   gt4py = pkgs.python38Packages.gt4py;
   fv3core = pkgs.python38Packages.fv3core;
 }
