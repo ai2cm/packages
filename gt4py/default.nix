@@ -1,17 +1,18 @@
 { stdenv, lib, buildPythonPackage, fetchFromGitHub, attrs, black
 , cached-property, click, dace, jinja2, numpy, packaging, pybind11, tabulate
-, typing-extensions, boltons, cytoolz, devtools, Mako, networkx, pydantic, toolz
-, typing-inspect, xxhash, boost, gridtools1, gridtools2, git, llvmPackages
-, pythonOlder, callPackage, pre-commit, isort, rope, hypothesis, pytest
-, pytest-cache, pytest-cov, pytest-factoryboy, sphinx, sphinx_rtd_theme }:
+, typing-extensions, boltons, cytoolz, scipy, devtools, Mako, networkx, pydantic
+, toolz, typing-inspect, xxhash, boost, gridtools1, gridtools2, git
+, llvmPackages, pythonOlder, callPackage, pre-commit, isort, rope, hypothesis
+, pytest, pytest-cache, pytest-cov, pytest-factoryboy, sphinx, sphinx_rtd_theme
+}:
 buildPythonPackage rec {
   pname = "gt4py";
   version = "0.1.0";
   src = fetchFromGitHub {
     owner = "GridTools";
     repo = pname;
-    rev = "12bdb9d661e48f196f301d1d6bf1584b6cb5c217";
-    sha256 = "1iacjkssb1nl6gx7c3w7yqf1hfz0yxgd5219n53hjc1wmfx43f6a";
+    rev = "b1a63b7076a5dd4fa456927af9ad7bca8d5b21a8";
+    sha256 = "15qnjfhy90w3hslqp0qv469kj941zpns1mxwc2z4dyiw0k2cizpm";
   };
   propagatedBuildInputs = [
     attrs
@@ -27,6 +28,7 @@ buildPythonPackage rec {
     typing-extensions
     boltons
     cytoolz
+    scipy
     devtools
     Mako
     networkx
