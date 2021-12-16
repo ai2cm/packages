@@ -30,10 +30,10 @@ let
   };
   nixpkgs = import (builtins.fetchTarball {
     # Descriptive name to make the store path easier to identify
-    name = "nixos-release-21.05";
+    name = "nixos-release-21.11";
     url =
-      "https://github.com/nixos/nixpkgs/archive/977b522d3101ad847fd51d695b817fe2cf8efaf6.tar.gz";
+      "https://github.com/nixos/nixpkgs/archive/573095944e7c1d58d30fc679c81af63668b54056.tar.gz";
     # Hash obtained using `nix-prefetch-url --unpack <url>`
-    sha256 = "13r8pdnlpxqb3jypf87yc32f9vc860l7vcz9kashh1wsy48r5a6x";
+    sha256 = "07s5cwhskqvy82b4rld9b14ljc0013pig23i3jx3l3f957rk95pg";
   }) { overlays = [ overlay ]; };
 in nixpkgs
