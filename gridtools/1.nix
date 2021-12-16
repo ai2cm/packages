@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
     owner = pname;
     repo = pname;
     rev = "eccd3e057d6deb1c97c7b6f8233ba6bf97a96622";
-    sha256 = "1mpyk85grc6zyjpjvkj29014ml5n86789068r1vj6l079yc5jw11";
+    sha256 = "x1niPXiJE0JyjWvtXiIkXmae2O5OS/YIx9EVkEAn+5g=";
   };
 
   propagatedBuildInputs = [ boost.dev ]
