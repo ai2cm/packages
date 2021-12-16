@@ -1,12 +1,12 @@
 { stdenv, lib, fetchFromGitHub, cmake, boost, git, cacert, llvmPackages }:
 stdenv.mkDerivation rec {
   pname = "gridtools";
-  version = "2.0.0";
+  version = "2.1.0";
   src = fetchFromGitHub {
     owner = pname;
     repo = pname;
-    rev = "c9c30288e632846fa30d9cd9b5f282aa6886a887";
-    sha256 = "1k1sqzib81352xsvkzyv38bmq5k5asfjdrck274i9q27w3fp1s5r";
+    rev = "a8039cbde1552f88424690f74211acb34a7f2720";
+    sha256 = "189na3bh6zndd1jnrdjv83d7jchydhbpyl40007qjmj6kayi7h8c";
   };
 
   propagatedBuildInputs = [ boost.dev ]
