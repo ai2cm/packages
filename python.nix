@@ -164,30 +164,6 @@ pkgs: self: super: rec {
 
   fv3gfs-wrapper = self.callPackage ./wrapper.nix { };
 
-  devtools = self.buildPythonPackage rec {
-    pname = "devtools";
-    version = "0.6.1";
-    src = super.fetchPypi {
-      inherit pname version;
-      sha256 = "1ms2kp1h395880k1bcn71ap53s33ffb2jxnzx3x2hpfkjisk0m50";
-    };
-    doCheck = false;
-  };
-
-  # Included because version 0.6.0 in nixpkgs 21.05 is broken in Python 3.9
-  typing-inspect = self.buildPythonPackage rec {
-    pname = "typing-inspect";
-    version = "0.7.1";
-
-    src = super.fetchPypi {
-      inherit version;
-      pname = "typing_inspect";
-      sha256 = "1al2lyi3r189r5xgw90shbxvd88ic4si9w7n3d9lczxiv6bl0z84";
-    };
-
-    propagatedBuildInputs = with self; [ typing-extensions mypy-extensions ];
-  };
-
   dace = self.callPackage ./dace { };
 
   gt4py = self.callPackage ./gt4py { };
@@ -198,8 +174,8 @@ pkgs: self: super: rec {
     src = pkgs.fetchFromGitHub {
       owner = "VulcanClimateModeling";
       repo = old.pname;
-      rev = "v31";
-      sha256 = "1prq3qvhxj2zf1473k6n7vr2fgbc6f34l7f5phlm22904gyxg7qg";
+      rev = "v36";
+      sha256 = "k/crvlddVKfkX+FJUSMUmnlmUaiJlgthekNWZ21olIM=";
     };
   });
 

@@ -35,7 +35,7 @@ stdenvNoCC.mkDerivation rec {
 
   # need to fix the linked libraries for some reason.
   # The "id" of these dylibs points to the build directory
-  postFixup = stdenvNoCC.lib.optionalString stdenvNoCC.isDarwin ''
+  postFixup = lib.optionalString stdenvNoCC.isDarwin ''
     function fixNameLib {
         install_name_tool -id "$1" "$1"
     }
@@ -45,15 +45,8 @@ stdenvNoCC.mkDerivation rec {
 
   # nativeBuildInputs = [ m4 ];
   # buildInputs = [ hdf5 curl mpi ];
-  buildInputs = [
-    netcdffortran
-    gfortran
-    mpich
-    gfortran.cc
-    coreutils
-    which
-    (lib.optional stdenvNoCC.isDarwin llvmPackages.openmp)
-  ];
+  buildInputs = [ netcdffortran gfortran mpich gfortran.cc coreutils which ]
+    ++ lib.optionals stdenvNoCC.isDarwin [ llvmPackages.openmp ];
   inherit netcdffortran gfortran;
   CXX = "${gfortran}/bin/g++";
   CC = "${gfortran}/bin/gcc";
