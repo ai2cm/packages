@@ -35,15 +35,13 @@ jobs:
             bash -c "comm -13 <(sort /tmp/store-path-pre-build | grep -v '\.drv$') <(nix path-info --all | grep -v '\.drv$' | sort) | cachix push $CACHIX_NAME"
   build-mac:
     macos:
-      xcode: 13.1.0
+      xcode: 13.2.0
     environment:
       CACHIX_NAME: vulcanclimatemodeling
     steps:
       - run:
           name: Install Nix
           command: |
-            curl -k https://curl.se/ca/cacert.pem -o ~/.cacert.pem
-            export CURL_CA_BUNDLE=~/.cacert.pem
             sh <(curl -L https://releases.nixos.org/nix/nix-2.3.16/install) --darwin-use-unencrypted-nix-store-volume --no-daemon
       - run:
           name: Set up Cachix
