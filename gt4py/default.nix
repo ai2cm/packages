@@ -11,8 +11,8 @@ buildPythonPackage rec {
   src = fetchFromGitHub {
     owner = "GridTools";
     repo = pname;
-    rev = "b1a63b7076a5dd4fa456927af9ad7bca8d5b21a8";
-    sha256 = "15qnjfhy90w3hslqp0qv469kj941zpns1mxwc2z4dyiw0k2cizpm";
+    rev = "72909daf56b16742891d9ab2321c444a37a9c77d";
+    sha256 = "148wjyy44b69vsafr3yfx0q0dd9hri7c4871xwfb9p5j3vx6i1kv";
   };
   propagatedBuildInputs = [
     attrs
