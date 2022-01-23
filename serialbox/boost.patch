@@ -1,0 +1,31 @@
+diff --git a/setup.py b/setup.py
+index 256ebde..3b45618 100644
+--- a/setup.py
++++ b/setup.py
+@@ -53,10 +53,13 @@ class CMakeBuild(build_ext):
+             "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={}".format(extdir),
+             "-DPYTHON_EXECUTABLE={}".format(sys.executable),
+             "-DCMAKE_BUILD_TYPE={}".format(cfg),  # not used on MSVC, but no harm
+-            "-DSERIALBOX_ENABLE_FORTRAN=false",
+-            "-DSERIALBOX_ENABLE_SDB=false",
+-            "-DSERIALBOX_ASYNC_API=false",
+-
++            "-DSERIALBOX_ENABLE_FORTRAN=OFF",
++            "-DSERIALBOX_ENABLE_SDB=OFF",
++            "-DSERIALBOX_ASYNC_API=OFF",
++            "-DSERIALBOX_BUILD_SHARED=ON",
++            "-DSERIALBOX_EXAMPLES=OFF",
++            "-DBoost_INCLUDE_DIR=@boostincdir@",
++            "-DBoost_LIBRARY_DIR=@boostlibdir@"
+         ]
+         build_args = []
+         # Adding CMake arguments set as environment variable
+@@ -123,6 +126,8 @@ class CMakeBuild(build_ext):
+             if hasattr(self, "parallel") and self.parallel:
+                 # CMake 3.12+ only.
+                 build_args += ["-j{}".format(self.parallel)]
++        elif "NIX_BUILD_CORES" in os.environ:
++            build_args += [f"-j{os.environ['NIX_BUILD_CORES']}"]
+
+         if not os.path.exists(self.build_temp):
+             os.makedirs(self.build_temp)

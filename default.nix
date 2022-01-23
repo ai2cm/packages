@@ -16,9 +16,6 @@ let
     pfunit = self.callPackage ./pfunit { };
     gridtools1 = self.callPackage ./gridtools/1.nix { };
     gridtools2 = self.callPackage ./gridtools/2.nix { };
-    serialbox = self.callPackage ./serialbox { };
-    serialboxNoFortran =
-      self.callPackage ./serialbox { enableFortran = false; };
     python39 =
       super.python39.override { packageOverrides = (packageOverrides self); };
     python38 =
