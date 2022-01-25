@@ -138,6 +138,7 @@ pkgs: self: super: rec {
       xarray
       cftime
       numpy
+      scipy
       fsspec
       typing-extensions
     ];
