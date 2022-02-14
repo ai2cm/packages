@@ -1,4 +1,12 @@
-pkgs: self: super: rec {
+pkgs: self: super:
+let
+  pace-src = pkgs.fetchFromGitHub {
+    owner = "ai2cm";
+    repo = "pace";
+    rev = "1d50a1cf7d95ba2fa158db228f186c0f293e1386";
+    sha256 = "0npnm0cski8ky8qy20mwiq1d8mvhkdczr8jc80vckkns5q0rpkn7";
+  };
+in rec {
 
   call_py_fort = self.callPackage ./call_py_fort { };
 
@@ -180,4 +188,19 @@ pkgs: self: super: rec {
   });
 
   fv3core = self.callPackage ./fv3core { };
+
+  pace-util = self.callPackage ./pace/util.nix { pace-src = pace-src; };
+  pace-fv3core = self.callPackage ./pace/fv3core.nix {
+    gt4py = gt4py-dev;
+    pace-src = pace-src;
+  };
+  pace-dsl = self.callPackage ./pace/dsl.nix {
+    gt4py = gt4py-dev;
+    pace-src = pace-src;
+  };
+  pace-stencils = self.callPackage ./pace/stencils.nix {
+    gt4py = gt4py-dev;
+    pace-src = pace-src;
+  };
+
 }
