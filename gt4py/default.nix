@@ -1,10 +1,9 @@
-{ stdenv, lib, buildPythonPackage, fetchFromGitHub, attrs, black
-, cached-property, click, dace, jinja2, numpy, packaging, pybind11, tabulate
-, typing-extensions, boltons, cytoolz, scipy, devtools, Mako, networkx, pydantic
-, toolz, typing-inspect, xxhash, boost, gridtools1, gridtools2, git
-, llvmPackages, pythonOlder, callPackage, pre-commit, isort, rope, hypothesis
-, pytest, pytest-cache, pytest-cov, pytest-factoryboy, sphinx, sphinx_rtd_theme
-}:
+{ stdenv, buildPythonPackage, fetchFromGitHub, attrs, black, cached-property
+, click, dace, jinja2, numpy, packaging, pybind11, tabulate, typing-extensions
+, boltons, cytoolz, scipy, devtools, Mako, networkx, pydantic, toolz
+, typing-inspect, xxhash, boost, gridtools1, gridtools2, git, llvmPackages
+, pythonOlder, callPackage, pre-commit, isort, rope, hypothesis, pytest
+, pytest-cache, pytest-cov, pytest-factoryboy, sphinx, sphinx_rtd_theme }:
 buildPythonPackage rec {
   pname = "gt4py";
   version = "0.1.0";
