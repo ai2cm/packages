@@ -1,5 +1,5 @@
 let
-  pkgs = (import ./.);
+  pkgs = (import ./. { });
   nix-pre-commit-hooks = import (builtins.fetchTarball
     "https://github.com/cachix/pre-commit-hooks.nix/tarball/397f0713d007250a2c7a745e555fa16c5dc8cadb");
 in {

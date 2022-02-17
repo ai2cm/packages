@@ -1,4 +1,4 @@
-with import ./default.nix;
+with import ./default.nix { };
 mkShell {
   buildInputs = [ git nixfmt nix-prefetch-git ];
   shellHook = ''
