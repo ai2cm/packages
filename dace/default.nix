@@ -4,12 +4,12 @@
 , six, sympy, urllib3, websockets, werkzeug, dill, cmake, pythonOlder }:
 buildPythonPackage rec {
   pname = "dace";
-  version = "0.10.8";
+  version = "0.13";
   src = fetchFromGitHub {
     owner = "spcl";
-    rev = "aa94b8f603e2341215647ae0ce4056df55049fe2";
+    rev = "v${version}";
     repo = pname;
-    sha256 = "1mnqajqg2mk88paxxzl0wqm0fyv8870acvak5kfk2lh2zhwmlpml";
+    sha256 = "1mvt5RQoVs7Rq8GfZU7bRYtnjZ3TtXYdWLyRBZ4Yq4Y=";
     fetchSubmodules = true;
   };
   propagatedBuildInputs = [
