@@ -1,13 +1,13 @@
 diff --git a/setup.py b/setup.py
-index 7fca08ce..0f602bbe 100644
+index d27a3f4e..cfd37bdb 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -79,7 +79,7 @@ setup(name='dace',
+@@ -56,7 +56,7 @@ setup(name='dace',
        include_package_data=True,
        install_requires=[
-           'numpy', 'networkx >= 2.5', 'astunparse', 'sympy<=1.9', 'pyyaml', 'ply',
--          'websockets', 'requests', 'flask', 'scikit-build', 'cmake', 'aenum',
-+          'websockets', 'requests', 'flask', 'scikit-build', 'aenum',
-           'dataclasses; python_version < "3.7"', 'dill', 'pyreadline;platform_system=="Windows"'
+           'numpy', 'networkx >= 2.5', 'astunparse', 'sympy<=1.9', 'pyyaml', 'ply', 'websockets', 'requests', 'flask',
+-          'scikit-build', 'cmake', 'aenum', 'dataclasses; python_version < "3.7"', 'dill',
++          'scikit-build', 'aenum', 'dataclasses; python_version < "3.7"', 'dill',
+           'pyreadline;platform_system=="Windows"', 'typing-compat; python_version < "3.8"'
        ],
-       extras_require={
+       extras_require={'testing': ['coverage', 'pytest-cov', 'scipy', 'absl-py', 'opt_einsum', 'pymlir', 'click']},
