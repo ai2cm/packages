@@ -28,8 +28,7 @@ let
     ref = "master";
     # SHA of the commit of pkgs to use. This effectively pins all packages to
     # the versions specified in that commit.
-    rev = "210eb5d8dc2f50402623ffad7ddd59ae78ed8a32";
-    sha256 = "13sv7nkvjvcfdbcry3jq8y92lg73jnvlarhwpj8dirg9p8dgq2rr";
+    rev = "8dfb5e904a424a3063c14ea47efe1ff0f50be81d";
   }) { };
 in pkgs.mkShell {
     buildInputs = [pkgs.fv3];
