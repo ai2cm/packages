@@ -64,28 +64,6 @@ pkgs: self: super: rec {
     doCheck = false;
   };
 
-  gcsfs = self.buildPythonPackage rec {
-    pname = "gcsfs";
-    version = "0.7.1";
-    src = super.fetchPypi {
-      inherit pname version;
-      sha256 = "sha256-A2WN+/GnNNmHqrNjHgo0Kz1+JKJJmLTY0kkf3SEFNyA=";
-    };
-    propagatedBuildInputs = with self; [
-      crcmod
-      google-auth
-      google-auth-oauthlib
-      requests
-      decorator
-      fsspec
-      aiohttp
-      ujson
-    ];
-
-    # doesn't find pytest, not sure why, disabling tests for now.
-    doCheck = false;
-  };
-
   f90nml = self.buildPythonPackage rec {
     pname = "f90nml";
     version = "1.2";
@@ -99,10 +77,10 @@ pkgs: self: super: rec {
 
   fv3config = self.buildPythonPackage rec {
     pname = "fv3config";
-    version = "0.7.1";
+    version = "0.9.0";
     src = super.fetchPypi {
       inherit pname version;
-      sha256 = "sha256-ijkWwsmgNLGX4QNuqhpN93uhCmeQqD5uN1jArHT/52E";
+      sha256 = "sha256-iqJdIXQChmiM3hDVcJpV8gc+SoAOSaPGJ6OWuSdzQ0Y=";
     };
     propagatedBuildInputs = with self; [
       f90nml
@@ -119,8 +97,8 @@ pkgs: self: super: rec {
       fsspec
       typing-extensions
     ];
-    # doesn't find pytest, not sure why, disabling tests for now.
     doCheck = false;
+    pythonImportsCheck = [ "fv3config" ];
 
   };
 
