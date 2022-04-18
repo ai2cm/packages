@@ -98,7 +98,6 @@ pkgs: self: super: rec {
       typing-extensions
     ];
     doCheck = false;
-    pythonImportsCheck = [ "fv3config" ];
 
   };
 
