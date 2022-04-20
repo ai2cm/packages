@@ -127,6 +127,25 @@ pkgs: self: super: rec {
     doCheck = false;
   };
 
+  pace-util = self.buildPythonPackage rec {
+    pname = "pace-util";
+    version = "0.7.0";
+    src = self.fetchPypi {
+      inherit pname version;
+      sha256 = "sha256-GBfdbryL0ylSDFefoJCobpFFJc1tfAaQ1gjeK0+BOvg=";
+    };
+    propagatedBuildInputs = with self; [
+      zarr
+      xarray
+      cftime
+      numpy
+      fsspec
+      typing-extensions
+    ];
+    doCheck = false;
+    pythonImportsCheck = [ "pace.util" ];
+  };
+
   pytest-regtest = self.buildPythonPackage rec {
     pname = "pytest-regtest";
     version = "1.4.5";
