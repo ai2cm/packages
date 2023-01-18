@@ -17,7 +17,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "b4:dc:1c:be:13:6b:e6:32:33:4f:d9:0c:a6:d9:57:40"
+            - "45:29:62:20:f9:e7:9f:6f:4b:e6:69:33:08:d0:0a:96"
       - checkout
       - run:
           name: Set up Cachix
@@ -44,7 +44,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "b4:dc:1c:be:13:6b:e6:32:33:4f:d9:0c:a6:d9:57:40"
+            - "45:29:62:20:f9:e7:9f:6f:4b:e6:69:33:08:d0:0a:96"
       - run:
           name: Install Nix
           command: |
