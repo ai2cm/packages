@@ -13,7 +13,7 @@ jobs:
     docker:
       - image: nixos/nix:2.3.12
         environment:
-          CACHIX_NAME: vulcanclimatemodeling
+          CACHIX_NAME: ai2climatemodeling
     steps:
       - checkout
       - run:
@@ -37,7 +37,7 @@ jobs:
     macos:
       xcode: 13.2.0
     environment:
-      CACHIX_NAME: vulcanclimatemodeling
+      CACHIX_NAME: ai2climatemodeling
     steps:
       - run:
           name: Install Nix

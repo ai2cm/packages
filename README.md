@@ -8,7 +8,7 @@ of the climate modeling team.
 This repo essentially pins a version of nixpkgs and defines derivations for the various packages
 that the climate modeling team develops.
 Continuous integration pushes builds to a cachix repo
-[vulcanclimatemodeling](https://app.cachix.org/cache/vulcanclimatemodeling) that can be used to
+[ai2climatemodeling](https://app.cachix.org/cache/ai2climatemodeling) that can be used to
 pull pre-built versions.
 
 ### Stable Workflow
@@ -24,7 +24,7 @@ let
   pkgs = import (builtins.fetchGit {
     # Descriptive name to make the store path easier to identify
     name = "ai2cm-packages";
-    url = "git@github.com:VulcanClimateModeling/packages.git";
+    url = "git@github.com:ai2cm/packages.git";
     ref = "master";
     # SHA of the commit of pkgs to use. This effectively pins all packages to
     # the versions specified in that commit.
